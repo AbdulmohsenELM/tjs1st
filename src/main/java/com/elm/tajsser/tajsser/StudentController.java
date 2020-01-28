@@ -9,30 +9,30 @@ import java.util.List;
 @RequestMapping(value = "/students")
 public class StudentController {
     @Autowired
-    private ServiceImplementation serviceImplementation;
+    private Service service;
 
     @PostMapping
     public Student addStudent(@RequestBody Student student) {
-        return serviceImplementation.addStudent(student);
+        return service.addStudent(student);
     }
 
     @GetMapping
     public List<Student> getStudents() {
-        return serviceImplementation.getStudents();
+        return service.getStudents();
     }
 
     @GetMapping(value = "/{studentID}")
     public Student getStudent(@PathVariable("studentID") int studentID) {
-        return serviceImplementation.getStudent(studentID);
+        return service.getStudent(studentID);
     }
 
     @PutMapping(value = "/{studentID}")
     public Student updateStudent(@RequestBody Student student, @PathVariable("studentID") int studentID) {
-        return serviceImplementation.updateStudent(student, studentID);
+        return service.updateStudent(student, studentID);
     }
 
     @DeleteMapping(value = "/{studentID}")
     public void deleteStudent(@PathVariable("studentID") int studentID) {
-        serviceImplementation.deleteStudent(studentID);
+        service.deleteStudent(studentID);
     }
 }
