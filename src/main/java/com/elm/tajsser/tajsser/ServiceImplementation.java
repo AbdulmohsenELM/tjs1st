@@ -7,44 +7,35 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Service
-@RestController
-@RequestMapping(value = "/students")
+
 public class ServiceImplementation implements Service {
 
     @Autowired
     private StudentREPO repo;
 
     @Override
-    @PostMapping
-    public String addStudent(@RequestBody Student student) {
-        repo.save(student);
-        return "Student added Successfully";
+    public Student addStudent(Student student) {
+        return repo.save(student);
     }
 
     @Override
-    @GetMapping
     public List<Student> getStudents() {
         return repo.findAll();
     }
 
     @Override
-    @GetMapping(value = "/{studentID}")
-    public Optional<Student> getStudent(@PathVariable("studentID") int studentID) {
-        return repo.findById(studentID);
+    public Student getStudent(int studentID) {
+        return repo.findById(studentID).get();
     }
 
     @Override
-    @PutMapping(value = "/{studentID}")
-    public String updateStudent(@RequestBody Student student, @PathVariable("studentID") int studentID) {
+    public Student updateStudent(Student student, int studentID) {
         student.setStudentID(studentID);
-        repo.save(student);
-        return "Student updated Successfully";
+        return repo.save(student);
     }
 
     @Override
-    @DeleteMapping(value = "/{studentID}")
-    public String deleteStudent(@PathVariable("studentID") int studentID) {
+    public void deleteStudent(int studentID) {
         repo.deleteById(studentID);
-        return "Student deleted Successfully";
     }
 }
