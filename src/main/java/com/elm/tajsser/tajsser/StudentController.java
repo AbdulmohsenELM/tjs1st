@@ -6,32 +6,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/students")
+@RequestMapping(value = "/Students")
 public class StudentController {
     @Autowired
     private Service service;
 
-    @PostMapping
+    @PostMapping(value = "/AddStudent")
     public Student addStudent(@RequestBody Student student) {
         return service.addStudent(student);
     }
 
-    @GetMapping
+    @GetMapping(value = "GetAllStudents")
     public List<Student> getStudents() {
         return service.getStudents();
     }
 
-    @GetMapping(value = "/{studentID}")
+    @GetMapping(value = "/GetStudent/{studentID}")
     public Student getStudent(@PathVariable("studentID") int studentID) {
         return service.getStudent(studentID);
     }
 
-    @PutMapping(value = "/{studentID}")
+    @PutMapping(value = "/UpdateStudent/{studentID}")
     public Student updateStudent(@RequestBody Student student, @PathVariable("studentID") int studentID) {
         return service.updateStudent(student, studentID);
     }
 
-    @DeleteMapping(value = "/{studentID}")
+    @DeleteMapping(value = "/DeleteStudent/{studentID}")
     public void deleteStudent(@PathVariable("studentID") int studentID) {
         service.deleteStudent(studentID);
     }
