@@ -13,4 +13,6 @@ public interface Service {
     public Student updateStudent(Student student, int studentID);
 
     public void deleteStudent(int studentID);
+
+    public String deleteAllStudents();
 }

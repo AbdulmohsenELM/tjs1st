@@ -38,4 +38,10 @@ public class ServiceImplementation implements Service {
     public void deleteStudent(int studentID) {
         repo.deleteById(studentID);
     }
+
+    @Override
+    public String deleteAllStudents() {
+        repo.deleteAll();
+        return "All Students have been deleted";
+    }
 }
