@@ -8,36 +8,37 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/Students")
 public class StudentController {
+
     @Autowired
-    private Service service;
+    private StudentService studentService;
 
     @PostMapping(value = "/AddStudent")
     public Student addStudent(@RequestBody Student student) {
-        return service.addStudent(student);
+        return studentService.addStudent(student);
     }
 
     @GetMapping(value = "/GetAllStudents")
     public List<Student> getStudents() {
-        return service.getStudents();
+        return studentService.getStudents();
     }
 
     @GetMapping(value = "/GetStudent/{studentID}")
     public Student getStudent(@PathVariable("studentID") int studentID) {
-        return service.getStudent(studentID);
+        return studentService.getStudent(studentID);
     }
 
     @PutMapping(value = "/UpdateStudent/{studentID}")
     public Student updateStudent(@RequestBody Student student, @PathVariable("studentID") int studentID) {
-        return service.updateStudent(student, studentID);
+        return studentService.updateStudent(student, studentID);
     }
 
     @DeleteMapping(value = "/DeleteStudent/{studentID}")
     public void deleteStudent(@PathVariable("studentID") int studentID) {
-        service.deleteStudent(studentID);
+        studentService.deleteStudent(studentID);
     }
 
     @DeleteMapping(value = "/DeleteAllStudents")
     public String deleteAllStudent() {
-        return service.deleteAllStudents();
+        return studentService.deleteAllStudents();
     }
 }

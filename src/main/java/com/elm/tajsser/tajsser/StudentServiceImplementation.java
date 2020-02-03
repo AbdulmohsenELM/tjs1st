@@ -1,14 +1,11 @@
 package com.elm.tajsser.tajsser;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @org.springframework.stereotype.Service
-
-public class ServiceImplementation implements Service {
+public class StudentServiceImplementation implements StudentService {
 
     @Autowired
     private StudentREPO repo;
