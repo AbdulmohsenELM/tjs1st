@@ -7,25 +7,24 @@ import javax.persistence.*;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "courseID")
-    private int id;
+    private int courseID;
     @Column(name = "courseName")
-    private String name;
+    private String courseName;
 
     public Course() {
 
     }
-    public int getId() {
-        return id;
+    public int getCourseID() {
+        return courseID;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setCourseID(int id) {
+        this.courseID = id;
     }
-    public String getName() {
-        return name;
+    public String getCourseName() {
+        return courseName;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 }

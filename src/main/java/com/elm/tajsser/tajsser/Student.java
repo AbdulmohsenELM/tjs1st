@@ -6,18 +6,18 @@ import java.util.List;
 @Entity
 @Table
 public class Student {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "StudentID")
     private int studentID;
-    @Column(name = "Name")
+    @Column(name = "StudentName")
     private String studentName;
-    @Column(name = "Age")
+    @Column(name = "StudentAge")
     private int studentAge;
 
-    @OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "studentID", referencedColumnName = "ID")
-    private List<Course> courses;
+    @OneToOne(targetEntity = Role.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "RoleID", referencedColumnName = "RoleID")
+    private Role role;
 
     public Student() {
 
@@ -45,10 +45,10 @@ public class Student {
     public void setStudentAge(int studentAge) {
         this.studentAge = studentAge;
     }
-    public List<Course> getCourses() {
-        return courses;
+    public Role getRole() {
+        return role;
     }
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

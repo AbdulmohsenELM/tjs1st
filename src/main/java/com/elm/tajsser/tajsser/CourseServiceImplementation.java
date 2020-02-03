@@ -28,7 +28,7 @@ public class CourseServiceImplementation implements CourseService {
 
     @Override
     public Course updateCourse(Course course, int courseID) {
-        course.setId(courseID);
+        course.setCourseID(courseID);
         return repo.save(course);
     }
 
