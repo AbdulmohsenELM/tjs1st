@@ -1,7 +1,10 @@
 package com.elm.tajsser.tajsser;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -18,6 +21,20 @@ public class Student {
     @OneToOne(targetEntity = Role.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "RoleID", referencedColumnName = "RoleID")
     private Role role;
+
+    @ManyToMany(cascade = {
+            CascadeType.ALL
+    })
+    @JoinTable(
+            name = "students_courses",
+            joinColumns = {
+                    @JoinColumn(name = "StudentID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "courseID")
+            }
+    )
+    Set<Course> courses = new HashSet<Course>();
 
     public Student() {
 
@@ -50,5 +67,13 @@ public class Student {
     }
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

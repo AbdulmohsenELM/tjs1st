@@ -1,6 +1,8 @@
 package com.elm.tajsser.tajsser;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -11,6 +13,9 @@ public class Course {
     private int courseID;
     @Column(name = "courseName")
     private String courseName;
+
+    @ManyToMany(mappedBy = "courses", cascade = { CascadeType.ALL })
+    private Set<Student> students = new HashSet<Student>();
 
     public Course() {
 
